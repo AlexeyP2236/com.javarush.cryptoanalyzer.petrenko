@@ -1,8 +1,7 @@
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
         while (true) {
@@ -15,18 +14,18 @@ public class Main {
             String console = in.nextLine();
             if (console.equals("1")) {
                 int mode = 1;
-//                System.out.println("\nВведите путь к файлу:");
-//                String nameFile = in.nextLine();
                 // "C:\code\";
                 String directory;
                 //проверка о существовании директории
+                //проверка о существовании файла
                 String url = "C:\\code\\";
                 while (true) {
-                    System.out.println("\nВведите путь к файлу: (пример C:\\code\\file, exit чтобы вернутся в меню)");
+                    System.out.println("\nВведите путь к текстовому файлу: (пример C:\\code\\file, exit чтобы вернутся в меню)");
                     directory = in.nextLine();
                     if (Path.of(directory).isAbsolute()) {
                         url = directory + ".txt";
-                        break;
+                        if (Files.isRegularFile(Path.of(url))) break;
+                        else System.out.println("Некорректный ввод");
                     } else if (directory.equals("exit")) {
                         break;
                     } else System.out.println("Некорректный ввод");

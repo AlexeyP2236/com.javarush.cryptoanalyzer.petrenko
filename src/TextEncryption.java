@@ -16,14 +16,13 @@ public class TextEncryption {
             arrChar[i] = text[i];
             for (int j = 0; j < ALPHABET.length; j++) {
                 if (count + shift == ALPHABET.length) count = 0 - shift;
-                if (mode == 1){
+                if (mode == 1) {
                     if (ALPHABET[j] == Character.toLowerCase(text[i])) {
                         if (ALPHABET[j] == text[i]) arrChar[i] = ALPHABET[count + shift];
                         else arrChar[i] = Character.toUpperCase(ALPHABET[count + shift]);
                         break;
                     }
-                }
-                else if (mode == 2){
+                } else if (mode == 2) {
                     if (ALPHABET[count + shift] == Character.toLowerCase(text[i])) {
                         if (ALPHABET[count + shift] == text[i]) arrChar[i] = ALPHABET[j];
                         else arrChar[i] = Character.toUpperCase(ALPHABET[j]);
