@@ -20,6 +20,7 @@ public class WorkingWithFile {
         String urlCopy = "";
         if (modeWrite == 1) urlCopy = directory + "-code.txt";
         else if (modeWrite == 2) urlCopy = directory + "-decode.txt";
+        else if (modeWrite == 3) urlCopy = directory + "-decode_brute_force.txt";
             try {
                 Path path = Path.of(urlCopy);
                 Files.writeString(path, code);

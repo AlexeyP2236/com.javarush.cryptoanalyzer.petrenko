@@ -20,14 +20,20 @@ public class Interface {
                 break;
             } else System.out.println("Некорректный ввод");
         }
-        System.out.println("Введите числовой ключ:");
-        if (in.hasNextInt()) {
-            int key = in.nextInt();
-            WorkingWithFile.writeFile(fileName, encryption.readerFile(url, key, mode), mode);
-            if (mode == 1) System.out.println("Шифровка завершена\n" + "-".repeat(100));
-            if (mode == 2) System.out.println("Расшифровка завершена\n" + "-".repeat(100));
+        if (mode == 3) {
+            WorkingWithFile.writeFile(fileName, encryption.readerFileBruteForce(url), mode);
+            System.out.println("Файл создан\n" + "-".repeat(100));
         } else {
-            System.out.println("Некорректный ввод\n");
+            System.out.println("Введите числовой ключ:");
+            if (in.hasNextInt()) {
+                int key = in.nextInt();
+                WorkingWithFile.writeFile(fileName, encryption.readerFile(url, key, mode), mode);
+                if (mode == 1) System.out.println("Шифровка завершена\n" + "-".repeat(100));
+                if (mode == 2) System.out.println("Расшифровка завершена\n" + "-".repeat(100));
+            } else {
+                System.out.println("Некорректный ввод\n");
+            }
         }
+
     }
 }

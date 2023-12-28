@@ -8,7 +8,7 @@ public class Main {
                     "1 - Сделать шифровку;\n" +
                     "2 - Расшифровать файл;\n" +
                     "3 - Взломать файл;\n" +
-                    "4 - exit");
+                    "4 - Выход");
             String console = in.nextLine();
             if (console.equals("1")) {
                 int mode = 1;
@@ -17,7 +17,8 @@ public class Main {
                 int mode = 2;
                 Interface.interfaceEncryption(mode);
             } else if (console.equals("3")) {
-
+                int mode = 3;
+                Interface.interfaceEncryption(mode);
             } else if (console.equals("4") || console.equals("exit")) break;
             else System.out.println("Неверный ввод");
         }
