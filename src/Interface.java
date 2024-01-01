@@ -5,10 +5,9 @@ import java.util.Scanner;
 public class Interface {
     public static void interfaceEncryption(int mode){
         Scanner in = new Scanner(System.in);
-        // "C:\code\";
         String fileName;
         TextEncryption encryption = new TextEncryption();
-        String url = "C:\\code\\";
+        String url = "";
         while (true) {
             System.out.println("\nВведите имя и путь к текстовому файлу: (пример C:\\code\\file, exit чтобы вернутся в меню)");
             fileName = in.nextLine();
