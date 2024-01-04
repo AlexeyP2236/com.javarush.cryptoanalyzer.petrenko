@@ -2,25 +2,36 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        label:
         while (true) {
             Scanner in = new Scanner(System.in);
-            System.out.println("Введите число:\n" +
-                    "1 - Сделать шифровку;\n" +
-                    "2 - Расшифровать файл;\n" +
-                    "3 - Взломать файл;\n" +
-                    "4 - Выход");
+            System.out.println("""
+                    Введите число:
+                    1 - Сделать шифровку;
+                    2 - Расшифровать файл;
+                    3 - Взломать файл;
+                    4 - Выход""");
             String console = in.nextLine();
-            if (console.equals("1")) {
-                int mode = 1;
-                Interface.interfaceEncryption(mode);
-            } else if (console.equals("2")) {
-                int mode = 2;
-                Interface.interfaceEncryption(mode);
-            } else if (console.equals("3")) {
-                int mode = 3;
-                Interface.interfaceEncryption(mode);
-            } else if (console.equals("4") || console.equals("exit")) break;
-            else System.out.println("Неверный ввод");
+            int mode;
+            switch (console) {
+                case "1":
+                    mode = 1;
+                    Interface.interfaceEncryption(mode);
+                    break;
+                case "2":
+                    mode = 2;
+                    Interface.interfaceEncryption(mode);
+                    break;
+                case "3":
+                    mode = 3;
+                    Interface.interfaceEncryption(mode);
+                    break;
+                case "4":
+                case "exit":
+                    break label;
+                default:
+                    System.out.println("Неверный ввод");
+            }
         }
     }
 }

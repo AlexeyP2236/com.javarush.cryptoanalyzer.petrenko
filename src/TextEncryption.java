@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class TextEncryption {
     private static final char[] ALPHABET = {'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з',
             'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ',
@@ -22,18 +19,18 @@ public class TextEncryption {
         int count = 0;
         for (int i = 0; i < text.length; i++) {
             arrChar[i] = text[i];
-            for (int j = 0; j < ALPHABET.length; j++) {
-                if (count + shift == ALPHABET.length) count = 0 - shift;
+            for (char c : ALPHABET) {
+                if (count + shift == ALPHABET.length) count = -shift;
                 if (mode == 1) {
-                    if (ALPHABET[j] == Character.toLowerCase(text[i])) {
-                        if (ALPHABET[j] == text[i]) arrChar[i] = ALPHABET[count + shift];
+                    if (c == Character.toLowerCase(text[i])) {
+                        if (c == text[i]) arrChar[i] = ALPHABET[count + shift];
                         else arrChar[i] = Character.toUpperCase(ALPHABET[count + shift]);
                         break;
                     }
                 } else if (mode == 2) {
                     if (ALPHABET[count + shift] == Character.toLowerCase(text[i])) {
-                        if (ALPHABET[count + shift] == text[i]) arrChar[i] = ALPHABET[j];
-                        else arrChar[i] = Character.toUpperCase(ALPHABET[j]);
+                        if (ALPHABET[count + shift] == text[i]) arrChar[i] = c;
+                        else arrChar[i] = Character.toUpperCase(c);
                         break;
                     }
                 }
@@ -49,16 +46,16 @@ public class TextEncryption {
 
     private String encryptionBruteForce(char[] text) {
         int shift = 1;
-        String result = "";
+        StringBuilder result = new StringBuilder();
         while (shift < ALPHABET.length) {
             int count = 0;
             char[] arrChar = new char[text.length];
             for (int i = 0; i < text.length; i++) {
                 arrChar[i] = text[i];
-                for (int j = 0; j < ALPHABET.length; j++) {
-                    if (count + shift == ALPHABET.length) count = 0 - shift;
-                    if (ALPHABET[j] == Character.toLowerCase(text[i])) {
-                        if (ALPHABET[j] == text[i]) arrChar[i] = ALPHABET[count + shift];
+                for (char c : ALPHABET) {
+                    if (count + shift == ALPHABET.length) count = -shift;
+                    if (c == Character.toLowerCase(text[i])) {
+                        if (c == text[i]) arrChar[i] = ALPHABET[count + shift];
                         else arrChar[i] = Character.toUpperCase(ALPHABET[count + shift]);
                         break;
                     }
@@ -66,11 +63,11 @@ public class TextEncryption {
                 }
                 count = 0;
             }
-            result += "Номер ключа - " + (ALPHABET.length - shift) + "\n";
-            result += new String(arrChar);
-            result += "\n" + "-".repeat(20) + "\n";
+            result.append("Номер ключа - ").append(ALPHABET.length - shift).append("\n");
+            result.append(new String(arrChar));
+            result.append("\n").append("-".repeat(20)).append("\n");
             shift++;
         }
-        return result;
+        return result.toString();
     }
 }
